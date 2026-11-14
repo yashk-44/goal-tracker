@@ -1,11 +1,11 @@
-name: Goal_workflow_1
+name: Test Goal
 run-name: ${{github.actor}} is running the goal tests
 on:
   pull_request: 
     branches: [main]
     
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
   
     steps:
@@ -23,5 +23,12 @@ jobs:
           cache: maven
       
       - run: ./mvnw clean test
-    
+      
+  docker-build:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: docker build -t goal-tracker:${GITHUB_SHA::7} .
+  
 
