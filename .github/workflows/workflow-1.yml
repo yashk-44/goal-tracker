@@ -1,0 +1,26 @@
+name: Goal_workflow_1
+run-name: ${{github.actor}} is running the goal tests
+on:
+  pull_request: 
+    branches: [main]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Start build
+        run: echo "${{github.actor}} has made a PR"
+        
+      - name: Checkout code
+        uses: actions/checkout@v5    
+
+      - name: Install dependencies
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25' 
+      
+      - run: ./mvnw clean test
+    
+
