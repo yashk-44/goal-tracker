@@ -15,4 +15,4 @@ spring:
     show-sql: true  # Show the SQL commands being used
     properties:  # properties for the JPA I want
       hibernate:  # Proprties for the hibernate ORM
-        format-sql: true  # Format the displayed SQL into a readable output
+        format_sql: true  # Format the displayed SQL into a readable output
