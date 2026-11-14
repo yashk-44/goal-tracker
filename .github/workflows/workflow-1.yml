@@ -11,15 +11,16 @@ jobs:
     steps:
       - name: Start build
         run: echo "${{github.actor}} has made a PR"
-        
+
       - name: Checkout code
         uses: actions/checkout@v5    
 
-      - name: Install dependencies
+      - name: Setup Java 25
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: '25' 
+          java-version: '25'
+          cache: maven
       
       - run: ./mvnw clean test
     
