@@ -55,6 +55,17 @@
 			<version>3.2.0</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- Annotations for boilderplate code like getters and setters -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+    	</dependency>
+		<!-- Annotation for value validation  -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
