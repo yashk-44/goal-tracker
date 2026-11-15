@@ -9,11 +9,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+
+// THIS WHOLE CLASS IS THE "MODEL" IN THE MVC
 
 @Entity 
 @Table(name="Goals")
@@ -30,10 +34,11 @@ public class Goal {
          * @param unit the unit describing the quantity (litres, glasses, etc.).
          * @param numTimes how many times the user wants to do this activity over <period>.
          * @param period the period over which the numTimes is being measures (hour, day, week, etc.).
+         * @param count the number of times the activity (whatToDo) has been achieved with the unit and quantity.
          */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generates the ID like in postgres tables
-    int id;
+    Integer id;
 
     @Column
     @NotBlank(message="Goal must not be blank!")
@@ -48,12 +53,16 @@ public class Goal {
 
     @Positive(message="quantity must be above zero (0)!")
     @Column
-    int quantity;
+    Integer quantity;
 
     @Positive(message="numTimes must be above zero (0)!")
     @Column
-    int numTimes; 
+    Integer numTimes; 
 
     @NotBlank(message="the period of time must not be empty!")
     String period;
+
+    @PositiveOrZero(message="the count must not be negative!")
+    @Column
+    Integer count;
 }

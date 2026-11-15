@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-      - name: Start build
-        run: echo "${{github.actor}} has made a PR"
-
       - name: Checkout code
         uses: actions/checkout@v5    
 
